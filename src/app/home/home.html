@@ -1,12 +1,12 @@
 <section>
   <form>
-    <input type="text" placeholder="Filter by city" #filter>
-    <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
+    <input type="text" placeholder="Filter by city" #filter/>
+    <button class="primary" type="submit" (click)="handleFilterSubmit(filter.value)">Search</button>
   </form>
 </section>
 
 <section class="results">
   @for (housingLocation of filteredLocationList; track housingLocation.id) {
-    <app-housing-location [housingLocation]="housingLocation" />
+    <app-housing-location [housingLocation]="housingLocation"/>
   }
 </section>
