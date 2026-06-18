@@ -1,3 +1,10 @@
-<h1>Angular v21</h1>
-
-<router-outlet />
+<main>
+  <a [routerLink]="['/']">
+    <header class="brand-name">
+      <img class="brand-logo" [ngSrc]="'assets/images/logo.svg'" width="151" height="44" [alt]="'logo'" aria-hidden="true" />
+    </header>
+  </a>
+  <section class="content">
+    <router-outlet></router-outlet>
+  </section>
+</main>
