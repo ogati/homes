@@ -6,11 +6,11 @@ export const routes: Routes = [
   {
     path: '',
     component: Home,
-    title: 'Home page'
+    title: 'Home'
   },
   {
     path: 'details/:id',
     component: DetailsComponent,
-    title: 'Home details'
+    title: 'Home Detail'
   }
 ];
