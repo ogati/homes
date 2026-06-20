@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, inject, OnInit } from '@angular/core';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { HousingService } from '../housing.service';
@@ -7,14 +7,11 @@ import { HousingLocationInterface } from '../housing-location.interface';
 
 @Component({
   selector: 'app-details',
-  imports: [
-    CommonModule,
-    ReactiveFormsModule
-  ],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './details.html',
   styleUrls: ['./details.scss'],
 })
-export class DetailsComponent {
+export class DetailsComponent implements OnInit {
   route: ActivatedRoute = inject(ActivatedRoute);
   housingService = inject(HousingService);
   housingLocation: HousingLocationInterface | undefined;
@@ -25,9 +22,8 @@ export class DetailsComponent {
     email: new FormControl('')
   });
 
-  constructor() {
-    const housingLocationId = parseInt(this.route.snapshot.params['id'], 10);
-    this.housingLocation = this.housingService.getHousingLocationById(housingLocationId);
+  ngOnInit(): void {
+    this.loadData();
   }
 
   submitApplication() {
@@ -36,5 +32,21 @@ export class DetailsComponent {
       this.applyForm.value.lastName ?? '',
       this.applyForm.value.email ?? ''
     );
+  }
+
+  altText() {
+    return this.housingLocation
+      ? `Exterior photo of ${this.housingLocation?.name}`
+      : 'Photo doesn\'t exist';
+  }
+
+  private loadData() {
+    // Use this if housingLocation is from API
+    // this.housingService.get().subscribe(data => {
+    //   this.housingLocation.set(data);
+    // });
+    
+    const housingLocationId = parseInt(this.route.snapshot.params['id'], 10);
+    this.housingLocation = this.housingService.getHousingLocationById(housingLocationId);
   }
 }
