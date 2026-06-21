@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { HousingLocationInterface } from '../housing-location.interface';
 import { HousingService } from '../housing.service';
 import { HousingLocation } from '../housing-location/housing-location';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
