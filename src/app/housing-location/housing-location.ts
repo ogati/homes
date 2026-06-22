@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HousingLocationInterface } from '../housing-location.interface';
 import { RouterLink } from '@angular/router';
@@ -13,5 +13,5 @@ import { RouterLink } from '@angular/router';
   styleUrl: './housing-location.scss'
 })
 export class HousingLocation {
-  @Input() housingLocation!: HousingLocationInterface;
+  readonly housingLocation = input.required<HousingLocationInterface>();
 }

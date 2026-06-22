@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HousingLocationInterface } from '../housing-location.interface';
@@ -15,12 +15,12 @@ import { HousingLocation } from '../housing-location/housing-location';
   templateUrl: './home.html',
   styleUrl: './home.scss'
 })
-export class Home {
+export class Home implements OnInit {
   housingService = inject(HousingService);
   housingLocationList: HousingLocationInterface[] = [];
   filteredLocationList: HousingLocationInterface[] = [];
 
-  constructor() {
+  ngOnInit(): void {
     this.housingLocationList = this.housingService.getAllHousingLocations();
     this.filteredLocationList = this.housingLocationList;
   }
