@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { Home } from './home/home';
-import { DetailsComponent } from './details/details';
 
 export const routes: Routes = [
   {
@@ -10,7 +9,7 @@ export const routes: Routes = [
   },
   {
     path: 'details/:id',
-    component: DetailsComponent,
+    loadComponent: () => import('./details/details').then(c => c.Details), // lazy routing
     title: 'Home Detail'
   }
 ];

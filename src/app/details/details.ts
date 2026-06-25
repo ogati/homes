@@ -7,12 +7,13 @@ import { HousingLocationInterface } from '../housing-location.interface';
 
 @Component({
   selector: 'app-details',
+  standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './details.html',
   styleUrls: ['./details.scss'],
 })
-export class DetailsComponent implements OnInit {
-  route: ActivatedRoute = inject(ActivatedRoute);
+export class Details implements OnInit {
+  readonly route = inject(ActivatedRoute);
   housingService = inject(HousingService);
   housingLocation: HousingLocationInterface | undefined;
 

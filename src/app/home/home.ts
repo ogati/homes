@@ -7,6 +7,7 @@ import { HousingLocation } from '../housing-location/housing-location';
 
 @Component({
   selector: 'app-home',
+  standalone: true,
   imports: [
     CommonModule,
     FormsModule,
