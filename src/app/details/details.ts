@@ -7,7 +7,6 @@ import { HousingLocationInterface } from '../housing-location.interface';
 
 @Component({
   selector: 'app-details',
-  standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './details.html',
   styleUrls: ['./details.scss'],
